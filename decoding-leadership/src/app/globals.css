@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* ── CSS Variables ────────────────────────────────────────────────────────── */
+:root {
+  --bg: #0a0f1e;
+  --surface: #111827;
+  --border: rgba(255, 255, 255, 0.08);
+  --purple: #a855f7;
+  --indigo: #818cf8;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+}
+
+.light {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #0f172a;
+  --text-muted: #64748b;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.5); }
+
+/* ── Background mesh gradient ─────────────────────────────────────────────── */
+.bg-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(168, 85, 247, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(99, 102, 241, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(14, 165, 233, 0.06) 0%, transparent 70%),
+    #0a0f1e;
+}
+
+/* ── Shimmer animation ────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.animate-shimmer { animation: shimmer 1.8s infinite; }
+
+/* ── Glow pulse ───────────────────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.15); }
+  50%       { box-shadow: 0 0 40px rgba(168, 85, 247, 0.30); }
+}
+.glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* ── Float animation ──────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.float { animation: float 4s ease-in-out infinite; }
+
+/* ── Step indicator ───────────────────────────────────────────────────────── */
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, rgba(168, 85, 247, 0.5), rgba(99, 102, 241, 0.2));
+}
+
+/* ── Prose text ───────────────────────────────────────────────────────────── */
+.prose-sm p { margin-bottom: 0.75rem; line-height: 1.75; }
+
+/* ── Line clamp utility ───────────────────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
